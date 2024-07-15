@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { getFromLocalStorage } from "@/utils/local-storage";
 
 // Define a type for the slice state
 interface CounterState {
   value: number;
+  token: string | null;
 }
 
 // Define the initial state using that type
 const initialState: CounterState = {
   value: 0,
+  token: getFromLocalStorage("accessToken"),
 };
+
+console.log("from redux");
 
 export const counterSlice = createSlice({
   name: "counter",
